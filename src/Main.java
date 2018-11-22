@@ -39,9 +39,12 @@ public class Main {
         System.out.println("Hello World!");
 
 
+//        旋转数组
+        test5();
+
 
         //快速排序
-        test4();
+//        test4();
 
 
         // 重建二叉树
@@ -57,6 +60,37 @@ public class Main {
 
 
     }
+
+    private static void test5() {
+        int [] array = new int[] {10, 11, 12, 13, 14, 15, 16, 4, 5, 6,7, 8};
+        System.out.println(getSmallInReverstArray(array));
+    }
+
+    private static int getSmallInReverstArray(int[] array) {
+        if (array == null) {
+            return -1;
+        }
+
+        int start = 0;
+        int end = array.length - 1;
+        while (start < end) {
+
+            if (end - start == 1) {
+                return (array[start] < array[end] ? array[start] : array[end]);
+            }
+
+
+            int middle = (start + end) / 2;
+            if (array[middle] > array[start]) {
+                start = middle + 1;
+            } else if (array[middle] < array[start]) {
+                end = middle;
+            }
+        }
+        return array[start];
+    }
+
+
 
     private static void test4() {
         int[] array = new int[] {10, 8, 6, 5, 4, 0, 3, 2, 1, 7, 9};
